@@ -34,19 +34,19 @@
             slug: "daniela",
             name: "Daniela Hernandez Santillan",
             role: "Development",
-            img: "../images/team/Daniela.PNG",
+            img: "../images/team/daniela.png",
         },
         {
             slug: "diego",
             name: "Diego Gerardo Estrada Morales",
             role: "Development",
-            img: "../images/team/DGEM.jpg",
+            img: "../images/team/dgem.jpg",
         },
         {
             slug: "edwin",
             name: "Edwin Eduardo Sanchez Aguilar",
             role: "Development",
-            img: "../images/team/edwinS.png",
+            img: "../images/team/edwins.png",
         },
         {
             slug: "erick",
