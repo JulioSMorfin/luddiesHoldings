@@ -34,12 +34,9 @@
         function tick() {
             position -= speed;
             var half = track.scrollWidth / 2;
-
-            if (position <= -half) {
-                position = 0;
-            } else if (position > 0) {
-                position = -half;
-            }
+            if (half <= 0) { requestAnimationFrame(tick); return; }
+            // Loop suave: mantener position en [-half, 0)
+            position = ((position % half) + half) % half - half;
             track.style.transform = "translateX(" + position + "px)";
             requestAnimationFrame(tick);
         }
@@ -48,23 +45,38 @@
         var btnNext = document.getElementById("btn-next");
         var btnPrev = document.getElementById("btn-prev");
 
+        var hoveringBtn = false;
+
         if (btnNext) {
-            btnNext.addEventListener("pointerenter", function() { speed = boostSpeed; });
-            btnNext.addEventListener("pointerleave", function() { speed = 0; });
+            btnNext.addEventListener("pointerenter", function() {
+                hoveringBtn = true;
+                speed = boostSpeed;
+            });
+            btnNext.addEventListener("pointerleave", function() {
+                hoveringBtn = false;
+                speed = baseSpeed;
+            });
         }
 
         if (btnPrev) {
-            btnPrev.addEventListener("pointerenter", function() { speed = -boostSpeed; });
-            btnPrev.addEventListener("pointerleave", function() { speed = 0; });
+            btnPrev.addEventListener("pointerenter", function() {
+                hoveringBtn = true;
+                speed = -boostSpeed;
+            });
+            btnPrev.addEventListener("pointerleave", function() {
+                hoveringBtn = false;
+                speed = baseSpeed;
+            });
         }
         carrusel.addEventListener("pointerenter", function (e) {
 
             if (e.target.tagName !== "BUTTON") {
-                speed = 0;
+                if (!hoveringBtn) speed = 0;
             }
         });
 
         carrusel.addEventListener("pointerleave", function () {
+            hoveringBtn = false;
             speed = baseSpeed;
         });
 
