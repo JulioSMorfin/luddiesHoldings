@@ -42,7 +42,7 @@
         var min = minByCountry[data.country] || 8;
         var max = maxByCountry[data.country] || 11;
         if (digitsOnly.length < min || digitsOnly.length > max) return "reg_error_phone";
-        if (!data.password || data.password.length < 6) return "reg_error_password_len";
+        if (!data.password || !passwordRe.test(data.password)) return "reg_error_password_len";
         if (data.password !== data.confirm) return "reg_error_password_match";
         return null;
     }

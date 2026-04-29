@@ -36,14 +36,9 @@
 .logo-container {
     width: 38px;
     height: 38px;
-    background-color: #fff;
-    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(162, 155, 254, 0.2);
-    border: 1px solid rgba(162, 155, 254, 0.15);
 }
 
 .brand-logo-img {

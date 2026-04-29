@@ -821,3 +821,9 @@
     padding: 0 0.2rem;
     user-select: none;
 }
+
+.page-admin .admin-pagination-btn.active {
+    background: linear-gradient(135deg, #a29bfe, #9e6c7c);
+    border: none;
+    color: #2f2630;
+}

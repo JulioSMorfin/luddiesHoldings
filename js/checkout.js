@@ -264,6 +264,7 @@
         var btnSubmit = document.getElementById("checkout-submit-purchase");
         var correo = document.getElementById("checkoutCorreo");
         var nombre = document.getElementById("checkoutNombre");
+        var btnClear = document.getElementById("checkout-clear-cart");
 
         function refresh() {
             syncVisibility(emptyEl, flowEl);
@@ -349,7 +350,15 @@
                 window.location.href = "pago.html";
             });
         }
-    }
+
+        if (btnClear) {
+            btnClear.addEventListener("click", function () {
+            if (!window.LuddiesCatalogCart || !window.LuddiesCatalogCart.clearCart) return;
+            window.LuddiesCatalogCart.clearCart();
+            refresh();
+        });
+       }
+}
 
     document.addEventListener("DOMContentLoaded", init);
 })();
