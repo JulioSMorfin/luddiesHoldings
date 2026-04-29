@@ -150,14 +150,6 @@
 
                     applyFilters();
 
-                    if (
-                        offcanvasEl &&
-                        window.bootstrap &&
-                        window.bootstrap.Offcanvas &&
-                        window.matchMedia("(max-width: 991.98px)").matches
-                    ) {
-                        window.bootstrap.Offcanvas.getOrCreateInstance(offcanvasEl).hide();
-                    }
                 });
             });
         }
@@ -182,4 +174,20 @@
     window.LuddiesCatalogFilter = {
         init: initCatalogFilter
     };
+
+    (function initOffcanvasSwipe() {
+    var el = document.getElementById("catalogFiltersOffcanvas");
+    if (!el) return;
+    var startX = 0;
+    el.addEventListener("touchstart", function(e) {
+        startX = e.touches[0].clientX;
+    }, { passive: true });
+    el.addEventListener("touchend", function(e) {
+        var dx = e.changedTouches[0].clientX - startX;
+        if (dx < -60 && window.bootstrap && window.bootstrap.Offcanvas) {
+            window.bootstrap.Offcanvas.getOrCreateInstance(el).hide();
+        }
+    }, { passive: true });
+})();
+
 })();
