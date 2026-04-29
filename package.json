@@ -1,0 +1,9 @@
+{
+  "homepage": "https://juliosmorfin.github.io/luddiesHoldings",
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  },
+  "scripts": {
+    "deploy": "gh-pages -r https://github.com/JulioSMorfin/luddiesHoldings.git -d client -s \"{index.html,html/**,style/**,js/**,images/**,docs/**}\" -v \"{index.html,html/**,style/**,js/**,images/**,docs/**}\" --nojekyll"
+  }
+}
